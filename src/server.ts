@@ -3,6 +3,7 @@ import { sequelize } from './config/db.js';
 import cookieParser from 'cookie-parser';
 import './models/index.js';
 import authRoutes from './routers/auth.js';
+import roomRoutes from './routers/room.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,14 +12,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/auth', authRoutes);
+app.use('/rooms', roomRoutes);
 
 const startServer = async () => {
   try {
     await sequelize.authenticate();
-    console.log('✅ Successful connection to the PostgreSQL database!');
-
     await sequelize.sync({ alter: true });
-    console.log('✅ Models successfully synchronized with the database. Tables created!');
 
     app.listen(PORT, () => {
       console.log(`🚀 Server started on port ${PORT}`);
