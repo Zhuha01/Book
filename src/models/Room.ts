@@ -1,5 +1,5 @@
-import { DataTypes, Model, type Optional } from 'sequelize';
-import { sequelize } from '../config/db.js';
+import { DataTypes, Model, type Optional } from "sequelize";
+import { sequelize } from "../config/db.js";
 
 interface RoomAttributes {
   id: number;
@@ -7,9 +7,12 @@ interface RoomAttributes {
   capacity: number;
 }
 
-interface RoomCreationAttributes extends Optional<RoomAttributes, 'id'> {}
+interface RoomCreationAttributes extends Optional<RoomAttributes, "id"> {}
 
-class Room extends Model<RoomAttributes, RoomCreationAttributes> implements RoomAttributes {
+class Room
+  extends Model<RoomAttributes, RoomCreationAttributes>
+  implements RoomAttributes
+{
   declare id: number;
   declare name: string;
   declare capacity: number;
@@ -37,8 +40,8 @@ Room.init(
   },
   {
     sequelize,
-    tableName: 'rooms',
-  }
+    tableName: "rooms",
+  },
 );
 
 export default Room;

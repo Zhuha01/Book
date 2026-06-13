@@ -1,5 +1,5 @@
-import { DataTypes, Model, type Optional } from 'sequelize';
-import { sequelize } from '../config/db.js';
+import { DataTypes, Model, type Optional } from "sequelize";
+import { sequelize } from "../config/db.js";
 
 interface BookingAttributes {
   id: number;
@@ -9,9 +9,12 @@ interface BookingAttributes {
   end_time: Date;
 }
 
-interface BookingCreationAttributes extends Optional<BookingAttributes, 'id'> {}
+interface BookingCreationAttributes extends Optional<BookingAttributes, "id"> {}
 
-class Booking extends Model<BookingAttributes, BookingCreationAttributes> implements BookingAttributes {
+class Booking
+  extends Model<BookingAttributes, BookingCreationAttributes>
+  implements BookingAttributes
+{
   declare id: number;
   declare room_id: number;
   declare user_id: number;
@@ -45,8 +48,8 @@ Booking.init(
   },
   {
     sequelize,
-    tableName: 'bookings',
-  }
+    tableName: "bookings",
+  },
 );
 
 export default Booking;

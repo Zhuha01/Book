@@ -45,15 +45,15 @@ A REST API backend for reserving meeting rooms. Users authenticate with JWT cook
 
    The repository includes [`.env.example`](.env.example) with all required variables:
 
-   | Variable     | Description                                      |
-   | ------------ | ------------------------------------------------ |
-   | `PORT`       | Server port (default: `3000`)                    |
-   | `DB_HOST`    | PostgreSQL host                                  |
-   | `DB_USER`    | PostgreSQL username                              |
-   | `DB_PASSWORD`| PostgreSQL password                              |
-   | `DB_NAME`    | PostgreSQL database name                         |
-   | `JWT_SECRET` | Secret key for signing JWT tokens                |
-   | `NODE_ENV`   | `development` or `production` (cookie security)  |
+   | Variable      | Description                                     |
+   | ------------- | ----------------------------------------------- |
+   | `PORT`        | Server port (default: `3000`)                   |
+   | `DB_HOST`     | PostgreSQL host                                 |
+   | `DB_USER`     | PostgreSQL username                             |
+   | `DB_PASSWORD` | PostgreSQL password                             |
+   | `DB_NAME`     | PostgreSQL database name                        |
+   | `JWT_SECRET`  | Secret key for signing JWT tokens               |
+   | `NODE_ENV`    | `development` or `production` (cookie security) |
 
 4. **Create the PostgreSQL database**
 
@@ -78,11 +78,11 @@ A REST API backend for reserving meeting rooms. Users authenticate with JWT cook
 
 ## Scripts
 
-| Script  | Command                  | Description                    |
-| ------- | ------------------------ | ------------------------------ |
-| `dev`   | `tsx watch src/server.ts`| Start dev server with hot reload |
-| `build` | `tsc`                    | Compile TypeScript to `dist/`  |
-| `start` | `node dist/server.js`    | Run the compiled production build |
+| Script  | Command                   | Description                       |
+| ------- | ------------------------- | --------------------------------- |
+| `dev`   | `tsx watch src/server.ts` | Start dev server with hot reload  |
+| `build` | `tsc`                     | Compile TypeScript to `dist/`     |
+| `start` | `node dist/server.js`     | Run the compiled production build |
 
 ## API Endpoints
 
