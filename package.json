@@ -7,7 +7,7 @@
     ".": "./dist/server.js"
   },
   "scripts": {
-    "dev": "nodemon",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },
