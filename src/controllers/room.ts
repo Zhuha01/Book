@@ -26,3 +26,4 @@ export const createRoom = async (req: Request, res: Response): Promise<void> => 
     res.status(500).json({ message: 'Server error during room creation' });
   }
 };
+

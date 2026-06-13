@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import './models/index.js';
 import authRoutes from './routers/auth.js';
 import roomRoutes from './routers/room.js';
+import bookingRoutes from './routers/booking.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ app.use(cookieParser());
 
 app.use('/auth', authRoutes);
 app.use('/rooms', roomRoutes);
+app.use('/bookings', bookingRoutes);
 
 const startServer = async () => {
   try {
