@@ -6,6 +6,7 @@ import authRoutes from './routers/auth.js';
 import roomRoutes from './routers/room.js';
 import bookingRoutes from './routers/booking.js';
 import userRoutes from './routers/user.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,8 @@ app.use('/auth', authRoutes);
 app.use('/rooms', roomRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/users', userRoutes);
+
+app.use(errorHandler);
 
 const startServer = async () => {
   try {
