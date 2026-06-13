@@ -2,6 +2,7 @@ import { type Request, type Response } from 'express';
 import  Room  from '../models/Room.js';
 import { Booking } from '../models/index.js';
 import { Op } from 'sequelize';
+import type { AuthRequest } from '../middlewares/auth.js';
 
 export const createRoom = async (req: Request, res: Response): Promise<void> => {
   try {

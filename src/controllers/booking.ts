@@ -81,3 +81,43 @@ export const createBooking = async (req: AuthRequest, res: Response): Promise<vo
     res.status(500).json({ message: 'Server error during booking creation' });
   }
 };
+
+export const deleteBooking = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    if (!id || Array.isArray(id)) {
+      res.status(400).json({ message: 'Invalid booking id' });
+      return;
+    }
+
+    // Find booking in the database
+    const booking = await Booking.findByPk(id);
+
+    if (!booking) {
+      res.status(404).json({ message: 'Booking not found' });
+      return;
+    }
+
+    if (req.user?.role === 'user') {
+
+      if (booking.user_id !== req.user.id) {
+        res.status(403).json({ message: 'Access denied: you can only delete your own bookings' });
+        return;
+      }
+
+      const now = new Date();
+      if (new Date(booking.start_time) <= now) {
+        res.status(400).json({ message: 'You can only cancel future bookings' });
+        return;
+      }
+    }
+
+    await booking.destroy();
+
+    res.status(200).json({ message: 'Booking successfully canceled' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error during canceling booking' });
+  }
+};
