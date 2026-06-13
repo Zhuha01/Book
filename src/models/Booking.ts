@@ -7,6 +7,7 @@ interface BookingAttributes {
   user_id: number;
   start_time: Date;
   end_time: Date;
+  deleted_at?: Date;
 }
 
 interface BookingCreationAttributes extends Optional<BookingAttributes, "id"> {}
@@ -49,7 +50,14 @@ Booking.init(
   {
     sequelize,
     tableName: "bookings",
-  },
-);
+    paranoid: true,
+    indexes: [
+      {
+        unique: true,
+        fields: ["user_id", "room_id", "start_time", "end_time"],
+        name: "booking_unique_index",
+    },
+  ],
+});
 
 export default Booking;
