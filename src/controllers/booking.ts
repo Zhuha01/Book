@@ -121,3 +121,16 @@ export const deleteBooking = async (req: AuthRequest, res: Response): Promise<vo
     res.status(500).json({ message: 'Server error during canceling booking' });
   }
 };
+
+export const getAllBookings = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const bookings = await Booking.findAll({
+      order: [['start_time', 'DESC']]
+    });
+    
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error during getting all bookings' });
+  }
+};

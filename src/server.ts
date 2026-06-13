@@ -5,6 +5,7 @@ import './models/index.js';
 import authRoutes from './routers/auth.js';
 import roomRoutes from './routers/room.js';
 import bookingRoutes from './routers/booking.js';
+import userRoutes from './routers/user.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use('/auth', authRoutes);
 app.use('/rooms', roomRoutes);
 app.use('/bookings', bookingRoutes);
+app.use('/users', userRoutes);
 
 const startServer = async () => {
   try {
