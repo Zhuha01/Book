@@ -56,9 +56,20 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       { expiresIn: '24h' }
     );
 
-    res.status(200).json({ token });
+    res.cookie('token', token, {
+      httpOnly: true, 
+      secure: process.env.NODE_ENV === 'production', 
+      maxAge: 24 * 60 * 60 * 1000, 
+    });
+
+    res.status(200).json({ message: 'Successful login' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error during login' });
   }
+};
+
+export const logout = (req: Request, res: Response): void => {
+  res.clearCookie('token');
+  res.status(200).json({ message: 'Successful logout' });
 };

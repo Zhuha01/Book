@@ -12,11 +12,11 @@ interface BookingAttributes {
 interface BookingCreationAttributes extends Optional<BookingAttributes, 'id'> {}
 
 class Booking extends Model<BookingAttributes, BookingCreationAttributes> implements BookingAttributes {
-  public id!: number;
-  public room_id!: number;
-  public user_id!: number;
-  public start_time!: Date;
-  public end_time!: Date;
+  declare id: number;
+  declare room_id: number;
+  declare user_id: number;
+  declare start_time: Date;
+  declare end_time: Date;
 }
 
 Booking.init(

@@ -1,5 +1,6 @@
 import express from 'express';
 import { sequelize } from './config/db.js';
+import cookieParser from 'cookie-parser';
 import './models/index.js';
 import authRoutes from './routers/auth.js';
 
@@ -7,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use('/auth', authRoutes);
 
